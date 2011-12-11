@@ -1,8 +1,5 @@
 package caesarencryption;
 
-import java.io.*;
-import java.lang.*;
-import java.util.*;
 /**
  * Caesar Class - The main class for en- and decryption
  * 
@@ -14,32 +11,15 @@ public class Caesar {
     //Encryption
     public String encryptText(String inputText) {
         if(inputText.length() > 0) {
+            //Replace special chars
+            inputText = this.replaceSpecialChars(inputText);  
             //Length of text 
-            Integer textChars = inputText.length();
-            //Turn text to upper case
-            inputText = inputText.toUpperCase();
+            int textChars = inputText.length();
+            //Encryption
+            String resultText = "";
             for(int i = 0; i < textChars; i++) {
-                //Replace all special german characters
-                char textChar = inputText.charAt(i);
-                if(textChar == 'ä' || textChar == 'Ä') {
-                  inputText = inputText.replaceAll(String.valueOf(textChar), "AE");
-                }
-                else if(textChar == 'ö' || textChar == 'Ö') {
-                  inputText = inputText.replaceAll(String.valueOf(textChar), "OE");
-                }
-                else if(textChar == 'ü' || textChar == 'Ü') {
-                  inputText = inputText.replaceAll(String.valueOf(textChar), "UE");
-                }
-                else if(textChar == 'ß') {
-                  inputText = inputText.replaceAll(String.valueOf(textChar), "SS");
-                }
+              resultText = resultText + String.valueOf(this.encryptSingleChar(inputText.charAt(i)));
             }
-            
-           String resultText = "";
-           for(int i = 0; i < textChars; i++) {
-               resultText = resultText + String.valueOf(this.encryptSingleChar(inputText.charAt(i)));
-           }
-           
            return resultText;
         }
         else return null;
@@ -48,7 +28,7 @@ public class Caesar {
     /*
      * 
      */
-    private char encryptSingleChar(Character textChar) {
+    private char encryptSingleChar(char textChar) {
        textChar = Character.toUpperCase(textChar);
        char newChar = textChar;
        //Replcae characters
@@ -78,7 +58,72 @@ public class Caesar {
        else if(textChar == 'X') newChar = 'A';
        else if(textChar == 'Y') newChar = 'B';
        else if(textChar == 'Z') newChar = 'C';
-       //Return the character
        return newChar;
+    }
+    
+    
+    public String decryptText(String inputText) {
+        if(inputText.length() > 0) {
+            //Replace special chars
+            inputText = this.replaceSpecialChars(inputText);  
+            //Length of text 
+            int textChars = inputText.length();
+            //Encryption
+            String resultText = "";
+            for(int i = 0; i < textChars; i++) {
+              resultText = resultText + String.valueOf(this.decryptSingleChar(inputText.charAt(i)));
+            }
+            return resultText;
+        }
+        else return null;
+    }
+    
+    
+    private char decryptSingleChar(char textChar) {
+       textChar = Character.toUpperCase(textChar);
+       char newChar = textChar;
+       //Replcae characters
+       if(textChar == 'A') newChar = 'X';
+       else if(textChar == 'B') newChar = 'Y';
+       else if(textChar == 'C') newChar = 'Z';
+       else if(textChar == 'D') newChar = 'A';
+       else if(textChar == 'E') newChar = 'B';
+       else if(textChar == 'F') newChar = 'C';
+       else if(textChar == 'G') newChar = 'D';
+       else if(textChar == 'H') newChar = 'E';
+       else if(textChar == 'I') newChar = 'F';
+       else if(textChar == 'J') newChar = 'G';
+       else if(textChar == 'K') newChar = 'H';
+       else if(textChar == 'L') newChar = 'I';
+       else if(textChar == 'M') newChar = 'J';
+       else if(textChar == 'N') newChar = 'K';
+       else if(textChar == 'O') newChar = 'L';
+       else if(textChar == 'P') newChar = 'M';
+       else if(textChar == 'Q') newChar = 'N';
+       else if(textChar == 'R') newChar = 'O';
+       else if(textChar == 'S') newChar = 'P';
+       else if(textChar == 'T') newChar = 'Q';
+       else if(textChar == 'U') newChar = 'R';
+       else if(textChar == 'V') newChar = 'S';
+       else if(textChar == 'W') newChar = 'T';
+       else if(textChar == 'X') newChar = 'U';
+       else if(textChar == 'Y') newChar = 'V';
+       else if(textChar == 'Z') newChar = 'W';
+       return newChar;        
+    }
+    
+    
+    /*
+     * 
+     */
+    private String replaceSpecialChars(String inputText) {
+        inputText = inputText.toUpperCase();
+        //Replacement
+        inputText = inputText.replaceAll(String.valueOf("Ä"), "AE");
+        inputText = inputText.replaceAll(String.valueOf("Ö"), "OE");
+        inputText = inputText.replaceAll(String.valueOf("Ü"), "UE");
+        inputText = inputText.replaceAll(String.valueOf("ß"), "SS");
+        //Return new text 
+        return inputText;
     }
 }
