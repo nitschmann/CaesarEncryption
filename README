@@ -1,5 +1,4 @@
-A simple Caesar encryption example in Java for my computer science courses. This example show how symmetric encryption works
-and how it can implemented in Java.
+A simple Caesar encryption example in Java for my computer science courses. This example shows how symmetric encryption works and how it can be implemented in Java.
 
 @author Florian Nitschmann (info@florian-nitschmann.de)
 @data 11-12-2011 14:30pm
