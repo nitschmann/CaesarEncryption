@@ -8,7 +8,13 @@ package caesarencryption;
  */
 public class Caesar {
     
-    //Encryption
+    /*
+     * This encrypts a text with the caesar encryption
+     * 
+     * @access public
+     * @param String inputText - The text for the encryption
+     * @return String
+     */
     public String encryptText(String inputText) {
         if(inputText.length() > 0) {
             //Replace special chars
@@ -26,7 +32,11 @@ public class Caesar {
     }
     
     /*
+     * Encryption of an single char 
      * 
+     * @access private
+     * @param char textChar - The char for encryption
+     * @return char
      */
     private char encryptSingleChar(char textChar) {
        textChar = Character.toUpperCase(textChar);
@@ -61,7 +71,13 @@ public class Caesar {
        return newChar;
     }
     
-    
+    /*
+     * Decryption of a text
+     * 
+     * @access public
+     * @param String inputText - The text for decryption (This should be a already encrypted text)
+     * @return String
+     */
     public String decryptText(String inputText) {
         if(inputText.length() > 0) {
             //Replace special chars
@@ -78,7 +94,13 @@ public class Caesar {
         else return null;
     }
     
-    
+    /*
+     * Decryption of an single char 
+     * 
+     * @access private
+     * @param char textChar - The char for decryption
+     * @return char
+     */
     private char decryptSingleChar(char textChar) {
        textChar = Character.toUpperCase(textChar);
        char newChar = textChar;
@@ -114,7 +136,11 @@ public class Caesar {
     
     
     /*
+     * Replacement for all german special characters
      * 
+     * @access private
+     * @param String inputText - The where the speical characters should be replaced
+     * @return String
      */
     private String replaceSpecialChars(String inputText) {
         inputText = inputText.toUpperCase();
@@ -126,4 +152,6 @@ public class Caesar {
         //Return new text 
         return inputText;
     }
+    
+ //--End Caesar
 }
